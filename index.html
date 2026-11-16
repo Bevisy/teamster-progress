@@ -55,6 +55,7 @@ ul{list-style:none;display:flex;flex-direction:column;gap:10px}
 .progress{display:flex;align-items:center;gap:10px}
 .track{flex:1;height:8px;border-radius:4px;background:var(--track);overflow:hidden}
 .fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--blue),color-mix(in srgb,var(--blue) 60%,#5ac8fa))}
+.placeholder{font-size:12px;color:var(--label3);min-width:44px}
 .ratio{font-size:12px;color:var(--label2);font-variant-numeric:tabular-nums;min-width:44px;text-align:right}
 .bars{display:flex;flex-direction:column;gap:5px}
 .bar{position:relative;display:flex;align-items:center;gap:8px}
@@ -106,7 +107,7 @@ footer{animation:fadein .5s ease .5s both}
 <header>
   <div><h1>交付域进度 × 业务代码量</h1>
     <p class="sub">master 45cfe50 · 功能项（共 168）· 数据取自功能列表与 git 已提交文件</p></div>
-  <div class="stamp"><span>更新 <b>2026-11-16 17:05</b></span><span>下次 <b>今天 18:05</b></span></div>
+  <div class="stamp"><span>更新 <b>2026-11-16 17:09</b></span><span>下次 <b>今天 18:05</b></span></div>
 </header>
 <ul>
 <li class="row">
@@ -147,7 +148,7 @@ footer{animation:fadein .5s ease .5s both}
     </li><li class="row">
       <div class="name"><strong>domain+platform</strong><small>纯规则 · db · log</small></div>
       <div class="chips"><span class="chip ok"><b>0</b></span><span class="chip doing"><b>0</b></span><span class="chip todo"><b>0</b></span></div>
-      <div class="progress"><span class="ratio">—</span></div>
+      <div class="progress"><span class="placeholder">— 无功能项</span></div>
       <div class="code"><div class="bars"><div class="bar"><i class="src" style="width:3.8%"></i><em>1.5k</em></div><div class="bar"><i class="tst" style="width:3.7%"></i><em class="dim">+1.5k</em></div></div></div>
     </li>
 <li class="row total">
