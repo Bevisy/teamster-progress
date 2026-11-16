@@ -1,155 +1,135 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="zh-CN"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Teamster · 交付域进度 × 代码量</title>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+:root{color-scheme:light dark;
+  --label:#1c1c1e; --label2:rgba(60,60,67,.72); --label3:rgba(60,60,67,.45);
+  --glass:rgba(255,255,255,.42); --glass-strong:rgba(255,255,255,.58);
+  --stroke:rgba(255,255,255,.9); --track:rgba(120,120,128,.22); --hairline:rgba(60,60,67,.12);
+  --green:#34c759; --orange:#ff9500; --gray:#8e8e93; --blue:#007aff; --ink:#1c1c1e;}
+@media (prefers-color-scheme:dark){:root{
+  --label:#f2f2f7; --label2:rgba(235,235,245,.6); --label3:rgba(235,235,245,.3);
+  --glass:rgba(28,28,30,.46); --glass-strong:rgba(28,28,30,.62);
+  --stroke:rgba(255,255,255,.18); --track:rgba(235,235,245,.16); --hairline:rgba(235,235,245,.14);
+  --ink:#f2f2f7; --blue:#0a84ff; --green:#30d158; --orange:#ff9f0a;}
+  .chip.ok{color:#8ff0ac} .chip.doing{color:#ffcf8a} .chip.todo{color:rgba(235,235,245,.72)}
+  .bar i.src{background:#e8e8ee}}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Geist','PingFang SC',system-ui,sans-serif;background:#f5f5f5;color:#2d3142;padding:3rem 2rem}
-.frame{max-width:1360px;margin:0 auto}
-.eyebrow{font-family:'Geist Mono',monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:#4f5d75;margin-bottom:.5rem}
-h1{font-family:'Instrument Serif',serif;font-size:2rem;font-weight:400;letter-spacing:-.02em;margin-bottom:.75rem}
-svg{width:100%;min-width:1080px;display:block}
-</style></head><body><div class="frame">
-<p class="eyebrow">Unified Progress · Teamster · 2026-11-16 16:05</p>
-<h1>交付域进度 × 业务代码量</h1>
-<svg viewBox="0 0 1280 776" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="tu-title tu-desc">
-<title id="tu-title">Teamster 交付域进度与代码量</title>
-<desc id="tu-desc">Teamster 交付域统一面板：每个交付域一行，对齐显示功能项完成状态、归一化进度与业务代码量（源码与测试行）；数据取自功能列表与 git 跟踪文件。</desc>
-<defs>          <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#4f5d75"/></marker>          <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#eb6c36"/></marker>          <marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2e5aa8"/></marker></defs>
-<text x="64" y="40" fill="rgba(45,49,66,0.40)" font-size="8" font-family="'Geist Mono','PingFang SC',monospace" letter-spacing="0.14em">UNIFIED · 功能状态 × 业务代码量 · master 45cfe50</text>
-<text x="1216" y="40" fill="rgba(45,49,66,0.40)" font-size="8" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="end">更新 2026-11-16 16:05 · 下次 今天 17:05</text>
-<text x="64" y="68" fill="#2d3142" font-size="16" font-weight="600" font-family="'Geist','PingFang SC',sans-serif">交付域一览：功能进度与代码量同行对齐</text>
-<text x="88" y="124" fill="rgba(45,49,66,0.40)" font-size="7" font-family="'Geist Mono','PingFang SC',monospace" letter-spacing="0.14em">交付域</text>
-<text x="272" y="124" fill="rgba(45,49,66,0.40)" font-size="7" font-family="'Geist Mono','PingFang SC',monospace" letter-spacing="0.14em">功能项（共168）</text>
-<text x="556" y="124" fill="rgba(45,49,66,0.40)" font-size="7" font-family="'Geist Mono','PingFang SC',monospace" letter-spacing="0.14em">进度 ✅🟡 / 总数 · 归一化</text>
-<text x="844" y="124" fill="rgba(45,49,66,0.40)" font-size="7" font-family="'Geist Mono','PingFang SC',monospace" letter-spacing="0.14em">业务代码行 · 源码深 / 测试浅</text>
-<line x1="64" y1="136" x2="1216" y2="136" stroke="rgba(45,49,66,0.15)" stroke-width="1"/>
-<rect x="64" y="156" width="1152" height="52" rx="6" fill="rgba(45,49,66,0.02)"/>
-<text x="88" y="188" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','PingFang SC',sans-serif">Runtime</text>
-<rect x="272" y="172" width="24" height="20" rx="4" fill="#eb6c36"/>
-<text x="284" y="184" fill="#fff" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">11</text>
-<rect x="304" y="172" width="24" height="20" rx="4" fill="#4f5d75"/>
-<text x="316" y="184" fill="#fff" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">25</text>
-<rect x="336" y="172" width="24" height="20" rx="4" fill="rgba(45,49,66,0.10)"/>
-<text x="348" y="184" fill="#7a8399" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">25</text>
-<rect x="556" y="176" width="120" height="12" rx="4" fill="#4f5d75"/>
-<text x="768" y="188" fill="#4f5d75" font-size="9" font-family="'Geist Mono','PingFang SC',monospace">36/61</text>
-<rect x="844" y="168" width="224" height="12" rx="4" fill="#2d3142"/>
-<rect x="844" y="184" width="84" height="8" rx="4" fill="rgba(79,93,117,0.35)"/>
-<text x="1080" y="180" fill="#2d3142" font-size="9" font-family="'Geist Mono','PingFang SC',monospace">28.1k</text>
-<text x="940" y="196" fill="#7a8399" font-size="8" font-family="'Geist Mono','PingFang SC',monospace">+10.5k</text>
-<rect x="64" y="216" width="1152" height="52" rx="6" fill="rgba(45,49,66,0.02)"/>
-<text x="88" y="248" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','PingFang SC',sans-serif">Governance</text>
-<rect x="272" y="232" width="24" height="20" rx="4" fill="#eb6c36"/>
-<text x="284" y="248" fill="#fff" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">1</text>
-<rect x="304" y="232" width="24" height="20" rx="4" fill="#4f5d75"/>
-<text x="316" y="248" fill="#fff" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">21</text>
-<rect x="336" y="232" width="24" height="20" rx="4" fill="rgba(45,49,66,0.10)"/>
-<text x="348" y="248" fill="#7a8399" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">3</text>
-<rect x="556" y="236" width="176" height="12" rx="4" fill="#4f5d75"/>
-<text x="768" y="248" fill="#4f5d75" font-size="9" font-family="'Geist Mono','PingFang SC',monospace">22/25</text>
-<rect x="844" y="228" width="196" height="12" rx="4" fill="#2d3142"/>
-<rect x="844" y="244" width="60" height="8" rx="4" fill="rgba(79,93,117,0.35)"/>
-<text x="1052" y="240" fill="#2d3142" font-size="9" font-family="'Geist Mono','PingFang SC',monospace">24.3k</text>
-<text x="916" y="256" fill="#7a8399" font-size="8" font-family="'Geist Mono','PingFang SC',monospace">+7.3k</text>
-<rect x="64" y="276" width="1152" height="52" rx="6" fill="rgba(45,49,66,0.02)"/>
-<text x="88" y="308" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','PingFang SC',sans-serif">Identity</text>
-<rect x="272" y="292" width="24" height="20" rx="4" fill="#eb6c36"/>
-<text x="284" y="304" fill="#fff" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">3</text>
-<rect x="304" y="292" width="24" height="20" rx="4" fill="#4f5d75"/>
-<text x="316" y="304" fill="#fff" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">7</text>
-<rect x="336" y="292" width="24" height="20" rx="4" fill="rgba(45,49,66,0.10)"/>
-<text x="348" y="304" fill="#7a8399" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">10</text>
-<rect x="556" y="296" width="100" height="12" rx="4" fill="#4f5d75"/>
-<text x="768" y="308" fill="#4f5d75" font-size="9" font-family="'Geist Mono','PingFang SC',monospace">10/20</text>
-<rect x="844" y="288" width="80" height="12" rx="4" fill="#2d3142"/>
-<rect x="844" y="304" width="32" height="8" rx="4" fill="rgba(79,93,117,0.35)"/>
-<text x="936" y="300" fill="#2d3142" font-size="9" font-family="'Geist Mono','PingFang SC',monospace">9.9k</text>
-<text x="888" y="316" fill="#7a8399" font-size="8" font-family="'Geist Mono','PingFang SC',monospace">+3.9k</text>
-<rect x="64" y="336" width="1152" height="52" rx="6" fill="rgba(45,49,66,0.02)"/>
-<text x="88" y="368" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','PingFang SC',sans-serif">Capability</text>
-<rect x="272" y="352" width="24" height="20" rx="4" fill="#eb6c36"/>
-<text x="284" y="368" fill="#fff" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">2</text>
-<rect x="304" y="352" width="24" height="20" rx="4" fill="#4f5d75"/>
-<text x="316" y="368" fill="#fff" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">8</text>
-<rect x="336" y="352" width="24" height="20" rx="4" fill="rgba(45,49,66,0.10)"/>
-<text x="348" y="368" fill="#7a8399" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">2</text>
-<rect x="556" y="356" width="168" height="12" rx="4" fill="#4f5d75"/>
-<text x="768" y="368" fill="#4f5d75" font-size="9" font-family="'Geist Mono','PingFang SC',monospace">10/12</text>
-<rect x="844" y="348" width="36" height="12" rx="4" fill="#2d3142"/>
-<rect x="844" y="364" width="16" height="8" rx="4" fill="rgba(79,93,117,0.35)"/>
-<text x="892" y="360" fill="#2d3142" font-size="9" font-family="'Geist Mono','PingFang SC',monospace">4.7k</text>
-<text x="872" y="376" fill="#7a8399" font-size="8" font-family="'Geist Mono','PingFang SC',monospace">+2.2k</text>
-<rect x="64" y="396" width="1152" height="52" rx="6" fill="rgba(45,49,66,0.02)"/>
-<text x="88" y="428" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','PingFang SC',sans-serif">Console 前端</text>
-<rect x="272" y="412" width="24" height="20" rx="4" fill="#eb6c36"/>
-<text x="284" y="424" fill="#fff" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">0</text>
-<rect x="304" y="412" width="24" height="20" rx="4" fill="#4f5d75"/>
-<text x="316" y="424" fill="#fff" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">12</text>
-<rect x="336" y="412" width="24" height="20" rx="4" fill="rgba(45,49,66,0.10)"/>
-<text x="348" y="424" fill="#7a8399" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">1</text>
-<rect x="556" y="416" width="184" height="12" rx="4" fill="#4f5d75"/>
-<text x="768" y="428" fill="#4f5d75" font-size="9" font-family="'Geist Mono','PingFang SC',monospace">12/13</text>
-<rect x="844" y="408" width="108" height="12" rx="4" fill="#2d3142"/>
-<rect x="844" y="424" width="60" height="8" rx="4" fill="rgba(79,93,117,0.35)"/>
-<text x="964" y="420" fill="#2d3142" font-size="9" font-family="'Geist Mono','PingFang SC',monospace">13.4k</text>
-<text x="916" y="436" fill="#7a8399" font-size="8" font-family="'Geist Mono','PingFang SC',monospace">+7.6k</text>
-<rect x="64" y="456" width="1152" height="52" rx="6" fill="rgba(45,49,66,0.02)"/>
-<text x="88" y="488" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','PingFang SC',sans-serif">工程/部署/HA</text>
-<rect x="272" y="472" width="24" height="20" rx="4" fill="#eb6c36"/>
-<text x="284" y="488" fill="#fff" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">1</text>
-<rect x="304" y="472" width="24" height="20" rx="4" fill="#4f5d75"/>
-<text x="316" y="488" fill="#fff" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">7</text>
-<rect x="336" y="472" width="24" height="20" rx="4" fill="rgba(45,49,66,0.10)"/>
-<text x="348" y="488" fill="#7a8399" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">20</text>
-<rect x="556" y="476" width="56" height="12" rx="4" fill="#4f5d75"/>
-<text x="768" y="488" fill="#4f5d75" font-size="9" font-family="'Geist Mono','PingFang SC',monospace">8/28</text>
-<rect x="844" y="468" width="56" height="12" rx="4" fill="#2d3142"/>
-<rect x="844" y="484" width="296" height="8" rx="4" fill="rgba(79,93,117,0.35)"/>
-<text x="912" y="480" fill="#2d3142" font-size="9" font-family="'Geist Mono','PingFang SC',monospace">7.2k</text>
-<text x="1152" y="496" fill="#7a8399" font-size="8" font-family="'Geist Mono','PingFang SC',monospace">+37.2k</text>
-<rect x="64" y="516" width="1152" height="52" rx="6" fill="rgba(45,49,66,0.02)"/>
-<text x="88" y="548" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','PingFang SC',sans-serif">评测/回归</text>
-<rect x="272" y="532" width="24" height="20" rx="4" fill="#eb6c36"/>
-<text x="284" y="544" fill="#fff" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">0</text>
-<rect x="304" y="532" width="24" height="20" rx="4" fill="#4f5d75"/>
-<text x="316" y="544" fill="#fff" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">6</text>
-<rect x="336" y="532" width="24" height="20" rx="4" fill="rgba(45,49,66,0.10)"/>
-<text x="348" y="544" fill="#7a8399" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">3</text>
-<rect x="556" y="536" width="132" height="12" rx="4" fill="#4f5d75"/>
-<text x="768" y="548" fill="#4f5d75" font-size="9" font-family="'Geist Mono','PingFang SC',monospace">6/9</text>
-<rect x="844" y="528" width="4" height="12" rx="4" fill="#2d3142"/>
-<rect x="844" y="544" width="4" height="8" rx="4" fill="rgba(79,93,117,0.35)"/>
-<text x="860" y="540" fill="#2d3142" font-size="9" font-family="'Geist Mono','PingFang SC',monospace">0.0k</text>
-<text x="860" y="556" fill="#7a8399" font-size="8" font-family="'Geist Mono','PingFang SC',monospace">+0.0k</text>
-<rect x="64" y="576" width="1152" height="52" rx="6" fill="rgba(45,49,66,0.02)"/>
-<text x="88" y="608" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist','PingFang SC',sans-serif">domain+platform</text>
-<rect x="272" y="592" width="24" height="20" rx="4" fill="#eb6c36"/>
-<text x="284" y="608" fill="#fff" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">0</text>
-<rect x="304" y="592" width="24" height="20" rx="4" fill="#4f5d75"/>
-<text x="316" y="608" fill="#fff" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">0</text>
-<rect x="336" y="592" width="24" height="20" rx="4" fill="rgba(45,49,66,0.10)"/>
-<text x="348" y="608" fill="#7a8399" font-size="10" font-weight="600" font-family="'Geist Mono','PingFang SC',monospace" text-anchor="middle">0</text>
-<text x="556" y="608" fill="#7a8399" font-size="9" font-family="'Geist Mono','PingFang SC',monospace">共享代码模块</text>
-<rect x="844" y="588" width="12" height="12" rx="4" fill="#2d3142"/>
-<rect x="844" y="604" width="12" height="8" rx="4" fill="rgba(79,93,117,0.35)"/>
-<text x="868" y="600" fill="#2d3142" font-size="9" font-family="'Geist Mono','PingFang SC',monospace">1.5k</text>
-<text x="868" y="616" fill="#7a8399" font-size="8" font-family="'Geist Mono','PingFang SC',monospace">+1.5k</text>
-<line x1="64" y1="640" x2="1216" y2="640" stroke="rgba(45,49,66,0.15)" stroke-width="1"/>
-<text x="88" y="676" fill="#2d3142" font-size="13" font-weight="600" font-family="'Geist','PingFang SC',sans-serif">合计</text>
-<text x="272" y="672" fill="#4f5d75" font-size="11" font-family="'Geist Mono','PingFang SC',monospace">18 ✅ · 86 🟡 · 64 ⬜</text>
-<text x="844" y="672" fill="#4f5d75" font-size="11" font-family="'Geist Mono','PingFang SC',monospace">源码 75.7k + 测试 62.7k · TS 20.9k · 迁移 88 对</text>
-<line x1="64" y1="696" x2="1216" y2="696" stroke="rgba(45,49,66,0.10)" stroke-width="0.8"/>
-<text x="64" y="720" fill="#4f5d75" font-size="8" font-family="'Geist Mono','PingFang SC',monospace" letter-spacing="0.14em">LEGEND</text>
-<rect x="160" y="708" width="16" height="16" rx="2" fill="#eb6c36"/>
-<text x="184" y="720" fill="#4f5d75" font-size="9" font-family="'Geist Mono','PingFang SC',monospace">✅ 完成</text>
-<rect x="312" y="708" width="16" height="16" rx="2" fill="#4f5d75"/>
-<text x="336" y="720" fill="#4f5d75" font-size="9" font-family="'Geist Mono','PingFang SC',monospace">🟡 进行中</text>
-<rect x="464" y="708" width="16" height="16" rx="2" fill="rgba(45,49,66,0.10)"/>
-<text x="488" y="720" fill="#4f5d75" font-size="9" font-family="'Geist Mono','PingFang SC',monospace">⬜ 未动工</text>
-<rect x="632" y="708" width="16" height="16" rx="2" fill="#2d3142"/>
-<text x="656" y="720" fill="#4f5d75" font-size="9" font-family="'Geist Mono','PingFang SC',monospace">源码行</text>
-<rect x="820" y="708" width="16" height="16" rx="2" fill="rgba(79,93,117,0.35)"/>
-<text x="844" y="720" fill="#4f5d75" font-size="9" font-family="'Geist Mono','PingFang SC',monospace">测试行（集成测试计入工程域）</text>
-</svg>
-</div></body></html>
+html{-webkit-text-size-adjust:100%}
+body{scrollbar-width:thin;scrollbar-color:rgba(120,120,128,.35) transparent;min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','PingFang SC','Helvetica Neue',sans-serif;
+  color:var(--label);padding:56px 24px 64px;-webkit-font-smoothing:antialiased;background-attachment:fixed;background:
+  radial-gradient(42% 38% at 18% 12%,#bcd4ff 0%,transparent 70%),
+  radial-gradient(38% 42% at 84% 8%,#ffd8ec 0%,transparent 70%),
+  radial-gradient(46% 40% at 78% 86%,#c9f2e2 0%,transparent 72%),
+  radial-gradient(40% 44% at 10% 82%,#e4d9ff 0%,transparent 70%),linear-gradient(180deg,#eef3fb,#e6ecf7)}
+@media (prefers-color-scheme:dark){body{background:
+  radial-gradient(42% 38% at 18% 12%,#1d2c4d 0%,transparent 70%),
+  radial-gradient(38% 42% at 84% 8%,#3a1d33 0%,transparent 70%),
+  radial-gradient(46% 40% at 78% 86%,#10322a 0%,transparent 72%),
+  radial-gradient(40% 44% at 10% 82%,#241a3d 0%,transparent 70%),linear-gradient(180deg,#0b0c10,#111319)}}
+main{max-width:1120px;margin:0 auto}
+header{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin:0 4px 28px}
+h1{font-size:34px;font-weight:700;letter-spacing:-.022em;line-height:1.15}
+.sub{margin-top:6px;font-size:13px;color:var(--label2)}
+.stamp{display:flex;flex-direction:column;gap:4px;text-align:right;font-size:12px;color:var(--label2);
+  padding:10px 14px;border-radius:16px;background:var(--glass);border:.5px solid var(--stroke);
+  -webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%);
+  box-shadow:0 4px 20px rgba(20,30,60,.08),inset 0 1px 0 rgba(255,255,255,.7);white-space:nowrap}
+.stamp b{font-weight:600;color:var(--label);font-variant-numeric:tabular-nums}
+ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.row{display:grid;grid-template-columns:200px 128px minmax(180px,1fr) minmax(230px,1.1fr);align-items:center;gap:20px;
+  padding:16px 22px;border-radius:20px;background:var(--glass);border:.5px solid var(--stroke);
+  -webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%);
+  box-shadow:0 8px 28px rgba(20,30,60,.10),inset 0 1px 0 rgba(255,255,255,.75),inset 0 0 0 .5px rgba(255,255,255,.35)}
+.row.total{background:var(--glass-strong);box-shadow:0 10px 32px rgba(0,0,0,.08)}
+.name strong{display:block;font-size:15px;font-weight:600;letter-spacing:-.01em}
+.name small{font-size:11.5px;color:var(--label2)}
+.chips{display:flex;gap:6px}
+.chip{display:inline-flex;align-items:center;justify-content:center;min-width:36px;height:26px;padding:0 8px;
+  border-radius:999px;font-size:13px;font-variant-numeric:tabular-nums}
+.chip b{font-weight:600}
+.chip.ok{background:color-mix(in srgb,var(--green) 24%,transparent);color:color-mix(in srgb,var(--green) 55%,#0b3d1c)}
+.chip.doing{background:color-mix(in srgb,var(--orange) 24%,transparent);color:color-mix(in srgb,var(--orange) 45%,#5a2e00)}
+.chip.todo{background:var(--track);color:color-mix(in srgb,var(--label) 70%,transparent)}
+.progress{display:flex;align-items:center;gap:10px}
+.track{flex:1;height:8px;border-radius:4px;background:var(--track);overflow:hidden}
+.fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--blue),color-mix(in srgb,var(--blue) 60%,#5ac8fa))}
+.ratio{font-size:12px;color:var(--label2);font-variant-numeric:tabular-nums;min-width:44px;text-align:right}
+.bars{display:flex;flex-direction:column;gap:5px}
+.bar{position:relative;display:flex;align-items:center;gap:8px}
+.bar::before{content:"";position:absolute;left:0;right:0;height:7px;border-radius:4px;background:var(--track)}
+.bar i{display:block;height:7px;border-radius:4px;position:relative}
+.bar i.src{background:linear-gradient(90deg,color-mix(in srgb,var(--blue) 55%,#1c1c1e),var(--blue))}
+.bar i.tst{background:color-mix(in srgb,var(--label2) 70%,transparent)}
+.bar em{font-style:normal;font-size:12px;margin-left:auto;padding-left:10px;font-variant-numeric:tabular-nums;position:relative}
+.bar em.dim{color:var(--label2)}
+footer{margin:18px 4px 0;font-size:11.5px;color:var(--label3);display:flex;flex-wrap:wrap;gap:16px}
+footer span::before{content:"";display:inline-block;width:8px;height:8px;border-radius:3px;margin-right:6px;vertical-align:0}
+footer .l1::before{background:var(--green)} footer .l2::before{background:var(--orange)} footer .l3::before{background:transparent;box-shadow:inset 0 0 0 1.5px var(--gray)}
+footer .l4::before{background:linear-gradient(90deg,var(--blue),#5ac8fa)} footer .l5::before{background:color-mix(in srgb,var(--label2) 70%,transparent)}
+footer .src{margin-left:auto} footer .note{color:var(--label3)}
+@media (max-width:860px){.row{grid-template-columns:1fr 1fr;row-gap:12px}.name,.chips{grid-column:auto}.progress,.code{grid-column:span 2}header{flex-direction:column;align-items:flex-start}.stamp{text-align:left}}
+</style></head>
+<body><main>
+<header>
+  <div><h1>交付域进度 × 业务代码量</h1>
+    <p class="sub">master 45cfe50 · 功能项（共 168）· 数据取自功能列表与 git 已提交文件</p></div>
+  <div class="stamp"><span>更新 <b>2026-11-16 16:45</b></span><span>下次 <b>今天 17:05</b></span></div>
+</header>
+<ul>
+<li class="row">
+      <div class="name"><strong>Runtime</strong><small>会话 · Pi 桥 · worker</small></div>
+      <div class="chips"><span class="chip ok"><b>11</b></span><span class="chip doing"><b>25</b></span><span class="chip todo"><b>25</b></span></div>
+      <div class="progress"><div class="track"><div class="fill" style="width:59%"></div></div><span class="ratio">36/61</span></div>
+      <div class="code"><div class="bars"><div class="bar"><i class="src" style="width:70.2%"></i><em>28.1k</em></div><div class="bar"><i class="tst" style="width:26.2%"></i><em class="dim">+10.5k</em></div></div></div>
+    </li><li class="row">
+      <div class="name"><strong>Governance</strong><small>计划 · 策略 · 审批 · 执行器</small></div>
+      <div class="chips"><span class="chip ok"><b>1</b></span><span class="chip doing"><b>21</b></span><span class="chip todo"><b>3</b></span></div>
+      <div class="progress"><div class="track"><div class="fill" style="width:88%"></div></div><span class="ratio">22/25</span></div>
+      <div class="code"><div class="bars"><div class="bar"><i class="src" style="width:60.8%"></i><em>24.3k</em></div><div class="bar"><i class="tst" style="width:18.3%"></i><em class="dim">+7.3k</em></div></div></div>
+    </li><li class="row">
+      <div class="name"><strong>Identity</strong><small>凭据 · OAuth · 授权</small></div>
+      <div class="chips"><span class="chip ok"><b>3</b></span><span class="chip doing"><b>7</b></span><span class="chip todo"><b>10</b></span></div>
+      <div class="progress"><div class="track"><div class="fill" style="width:50%"></div></div><span class="ratio">10/20</span></div>
+      <div class="code"><div class="bars"><div class="bar"><i class="src" style="width:24.7%"></i><em>9.9k</em></div><div class="bar"><i class="tst" style="width:9.8%"></i><em class="dim">+3.9k</em></div></div></div>
+    </li><li class="row">
+      <div class="name"><strong>Capability</strong><small>MCP 客户端 · 清单</small></div>
+      <div class="chips"><span class="chip ok"><b>2</b></span><span class="chip doing"><b>8</b></span><span class="chip todo"><b>2</b></span></div>
+      <div class="progress"><div class="track"><div class="fill" style="width:83%"></div></div><span class="ratio">10/12</span></div>
+      <div class="code"><div class="bars"><div class="bar"><i class="src" style="width:11.7%"></i><em>4.7k</em></div><div class="bar"><i class="tst" style="width:5.6%"></i><em class="dim">+2.2k</em></div></div></div>
+    </li><li class="row">
+      <div class="name"><strong>Console 前端</strong><small>React SPA · TypeScript</small></div>
+      <div class="chips"><span class="chip ok"><b>0</b></span><span class="chip doing"><b>12</b></span><span class="chip todo"><b>1</b></span></div>
+      <div class="progress"><div class="track"><div class="fill" style="width:92%"></div></div><span class="ratio">12/13</span></div>
+      <div class="code"><div class="bars"><div class="bar"><i class="src" style="width:33.4%"></i><em>13.4k</em></div><div class="bar"><i class="tst" style="width:18.9%"></i><em class="dim">+7.6k</em></div></div></div>
+    </li><li class="row">
+      <div class="name"><strong>工程/部署/HA</strong><small>compose · 门槛脚本 · 集成测试</small></div>
+      <div class="chips"><span class="chip ok"><b>1</b></span><span class="chip doing"><b>7</b></span><span class="chip todo"><b>20</b></span></div>
+      <div class="progress"><div class="track"><div class="fill" style="width:29%"></div></div><span class="ratio">8/28</span></div>
+      <div class="code"><div class="bars"><div class="bar"><i class="src" style="width:18.0%"></i><em>7.2k</em></div><div class="bar"><i class="tst" style="width:93.1%"></i><em class="dim">+37.2k</em></div></div></div>
+    </li><li class="row">
+      <div class="name"><strong>评测/回归</strong><small>故障矩阵 · 回放</small></div>
+      <div class="chips"><span class="chip ok"><b>0</b></span><span class="chip doing"><b>6</b></span><span class="chip todo"><b>3</b></span></div>
+      <div class="progress"><div class="track"><div class="fill" style="width:67%"></div></div><span class="ratio">6/9</span></div>
+      <div class="code"><div class="bars"><div class="bar"><i class="src" style="width:0.0%"></i><em>0.0k</em></div><div class="bar"><i class="tst" style="width:0.0%"></i><em class="dim">+0.0k</em></div></div></div>
+    </li><li class="row">
+      <div class="name"><strong>domain+platform</strong><small>纯规则 · db · log</small></div>
+      <div class="chips"><span class="chip ok"><b>0</b></span><span class="chip doing"><b>0</b></span><span class="chip todo"><b>0</b></span></div>
+      <div class="progress"><span class="ratio">—</span></div>
+      <div class="code"><div class="bars"><div class="bar"><i class="src" style="width:3.8%"></i><em>1.5k</em></div><div class="bar"><i class="tst" style="width:3.7%"></i><em class="dim">+1.5k</em></div></div></div>
+    </li>
+<li class="row total">
+  <div class="name"><strong>合计</strong><small>完成 18 · 进行 86 · 未动工 64</small></div>
+  <div class="chips"><span class="chip ok"><b>18</b></span><span class="chip doing"><b>86</b></span><span class="chip todo"><b>64</b></span></div>
+  <div class="progress"><span class="ratio">104/168</span></div>
+  <div class="code"><span class="ratio">源码 89.0k + 测试 70.3k · 迁移 88 对</span></div>
+</li>
+</ul>
+<footer>
+  <span class="l1">完成</span><span class="l2">进行中</span><span class="l3">未动工</span>
+  <span class="l4">源码行</span><span class="l5">测试行</span>
+  <span class="note">进度条 = 已开始 / 总数 · 评测域代码在 test/e2e，计入工程域 · 迁移 88 对为 up/down 迁移脚本</span>
+  <span class="src">按主责域归属，联署功能只计首个主责</span>
+</footer>
+</main></body></html>
